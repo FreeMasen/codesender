@@ -1,0 +1,46 @@
+pin = 17
+len = 187
+
+[[switches]]
+id = 1
+on = 0
+off = 0
+flips = [
+    {
+        hour: 10,
+        min: 0,
+        tod: "Pm",
+    },
+]
+
+[[switches]]
+id = 2
+on = 0
+off = 0
+flips = [
+
+]
+
+[[switches]]
+id = 3
+on = 0
+off = 0
+flips = [
+
+]
+
+[[switches]]
+id = 4
+on = 0
+off = 0
+flips = [
+
+]
+
+[[switches]]
+id = 5
+on = 0
+off = 0
+flips = [
+
+]
