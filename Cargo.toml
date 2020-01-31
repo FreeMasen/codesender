@@ -4,7 +4,7 @@ version = "0.1.0"
 authors = ["Robert Masen <r@robertmasen.pizza>"]
 
 [dependencies]
-rppal = {version = "0.9", optional = true}
+rppal = {version = "0.9"}
 docopt = "1"
 serde = "1"
 serde_derive = "1"
