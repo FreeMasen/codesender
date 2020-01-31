@@ -1,6 +1,5 @@
-extern crate rppal;
 
-use rppal::gpio::{Gpio, Level, Error};
+use rppal::gpio::{Gpio, Level, Error, OutputPin};
 use std::time::Duration;
 
 
@@ -13,22 +12,23 @@ pub fn send(code: usize, pin: u8, length: u64) -> Result<(), Error> {
     let low_dur = Duration::from_micros(length);
     let sync_dur = Duration::from_micros(SYNC * length);
     let io = Gpio::new()?;
+    let mut pin = io.get(pin)?.into_output();
 
     for c in bin.chars() {
         if c == '1' {
-            send_(&io, pin, high_dur, low_dur);
+            send_(&mut pin, high_dur, low_dur);
         } else {
-            send_(&io, pin, low_dur, high_dur);
+            send_(&mut pin, low_dur, high_dur);
         }
     }
-    send_(&io, pin, low_dur, sync_dur);
+    send_(&mut pin, low_dur, sync_dur);
     Ok(())
 }
 
-fn send_(io: &Gpio, pin: u8, high_dur: Duration, low_dur: Duration) {
-    io.write(pin, Level::High);
+fn send_(pin: &mut OutputPin, high_dur: Duration, low_dur: Duration) {
+    pin.write(Level::High);
     wait(high_dur);
-    io.write(pin, Level::Low);
+    pin.write(Level::Low);
     wait(low_dur);
 }
 

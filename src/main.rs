@@ -1,10 +1,5 @@
-extern crate codesender;
-extern crate docopt;
-extern crate serde;
-#[macro_use]
-extern crate serde_derive;
-
 use docopt::Docopt;
+use serde::Deserialize;
 
 static USAGE: &str = "
 codesender

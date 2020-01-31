@@ -2,15 +2,13 @@
 name = "codesender"
 version = "0.1.0"
 authors = ["Robert Masen <r@robertmasen.pizza>"]
+edition = "2018"
+
 
 [dependencies]
-rppal = {version = "0.9"}
+rppal = "0.11"
 docopt = "1"
-serde = "1"
-serde_derive = "1"
-
-[lib]
-name = "codesender"
+serde = { version = "1", features = ["derive"] }
 
 [[bin]]
 name = "code_send"
